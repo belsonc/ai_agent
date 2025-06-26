@@ -38,35 +38,4 @@ def get_files_info(working_directory, directory=None):
     return string_to_return
 
 def get_file_content(working_directory,file_path):
-    try:
-        working_directory_abspath = os.path.abspath(working_directory)
-        file_path_abspath = os.path.abspath(file_path)
-        
-    #if the file_path is outside the working directory, return a string with an error
-        if not file_path_abspath.startswith(working_directory_abspath):
-            return (f'Error: Cannot read "{file_path}" as it is outside the permitted working directory')
-
-    #if the file_path is not a file, again, return an error string
-        if not os.path.isfile(file_path):
-            return (f'Error: File not found or is not a regular file: "{file_path}"')
-
-    #read the file and return its contents as a string
-        MAX_CHARS = 10000
-        with open(file_path, "r") as f:
-            file_contents = f.read(MAX_CHARS)
-            if os.path.getsize(file_path) > MAX_CHARS and len(file_contents) == MAX_CHARS:
-                file_contents += f'[...File "{file_path}" truncated at 10000 characters]'
-
-    except Exception as e:
-        return ("Error: " + str(e))
-    
-
-    #the lesson gives standard library functions to use
-    #truncate at 10k characters and append the message to the end
-
-    #update tests.py - remove calls to get_files_info, change it to get_file_content("calculator, "lorem.txt")
-    #test that truncating works
-
-    #change lorem.txt to main.py, pkg/calculator.py, and /bin/cat (this one should give an error message)
-
-    return file_contents
+    return None
