@@ -40,7 +40,7 @@ def get_files_info(working_directory, directory=None):
 def get_file_content(working_directory,file_path):
     try:
         working_directory_abspath = os.path.abspath(working_directory)
-        file_path_abspath = os.path.abspath(file_path)
+        file_path_abspath = os.path.abspath(os.path.join(working_directory,file_path))
         
     #if the file_path is outside the working directory, return a string with an error
         if not file_path_abspath.startswith(working_directory_abspath):
@@ -70,3 +70,4 @@ def get_file_content(working_directory,file_path):
     #change lorem.txt to main.py, pkg/calculator.py, and /bin/cat (this one should give an error message)
 
     return file_contents
+#editing to make sure something gets committed
