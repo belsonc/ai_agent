@@ -74,10 +74,17 @@ def get_file_content(working_directory,file_path):
 
 def write_file(working_directory, file_path, content):
     #if the file path is outside of the working directory, return a string with an error:
-    return(f'Error: Cannot write to "{file_path}" as it is outside the permitted working directory')
+    file_path_abspath = os.path.abspath(file_path)
+    working_directory_abspath = os.path.abspath(working_directory)
+
+    if not file_path_abspath.startswith(working_directory_abspath):
+        return(f'Error: Cannot write to "{file_path}" as it is outside the permitted working directory')
 
     #if the file_path doesn't exist, create it.  as always, if there are errors, return a string representing the error, prefixed with "Error:".
+    if not os.path.exists(file_path_abspath):
+        os.makedirs(file_path_abspath)
 
+    
     #Overwrite the contents of the file with the content argument
 
     #if successful, return a string weith the message:
