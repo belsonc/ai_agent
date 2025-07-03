@@ -84,7 +84,7 @@ def write_file(working_directory, file_path, content):
     if not os.path.exists(file_path_abspath):
         os.makedirs(file_path_abspath)
 
-    #temporary addition so there's something to commit to git
+    #removing yesterday's comment so i can re-add it tomorrow
     #Overwrite the contents of the file with the content argument
 
     #if successful, return a string weith the message:
