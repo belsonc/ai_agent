@@ -84,7 +84,7 @@ def write_file(working_directory, file_path, content):
     if not os.path.exists(file_path_abspath):
         os.makedirs(file_path_abspath)
 
-    #removing yesterday's comment so i can re-add it tomorrow
+    #adding a comment for 7/3
     #Overwrite the contents of the file with the content argument
 
     #if successful, return a string weith the message:
