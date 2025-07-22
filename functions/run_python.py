@@ -20,7 +20,7 @@ def run_python_file(working_directory, file_path, args=[]):
     #if the file_path doesn't exist, return an error string:
     #f'Error: File "{file_path}" not found.'
         if not os.path.exists(file_path_abspath):
-            return (f'Error: "{file_path}" not found.')
+            return (f'Error: File "{file_path}" not found.')
 
     #if the file doesn't end in .py, return an error string:
     #f'Error: "{file_path}" is not a Python file.'
@@ -28,6 +28,12 @@ def run_python_file(working_directory, file_path, args=[]):
             return (f'Error: "{file_path}" is not a Python file.')
     #use subprocess.run function to execute the python file
         completed_process = subprocess.run(["python3", file_path] + args, capture_output=True, cwd=working_directory, timeout=30)
+
+        if (not completed_process.stdout.decode().strip() and
+            not completed_process.stderr.decode().strip() and
+            completed_process.returncode == 0):
+            return "No output produced."
+            
     #-set a timeout of 30 seconds to prevent infinite execution
     #-capture both stdout and stderr
     #-set the working directory properly
